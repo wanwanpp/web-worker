@@ -1,5 +1,9 @@
 package com.wp.ioc;
 
+import com.wp.ioc.annotation.Autowired;
+import com.wp.ioc.annotation.Service;
+import com.wp.ioc.annotation.Value;
+
 /**
  * Created by 王萍 on 2017/11/17 0017.
  */
@@ -7,10 +11,24 @@ package com.wp.ioc;
 public class ProductService {
 
     @Autowired
-    private CacheDb<String, Product> db;
+    private ProductDb productDb;
 
-    public Integer getAllProduct() {
-        
+    @Value("12345")
+    private String test;
+
+    public Integer getProductCount() {
+        return productDb.count();
     }
 
+    public Product selectOne(String id) {
+        return productDb.select(id);
+    }
+
+    public void deleteOne(String id) {
+        productDb.delete(id);
+    }
+
+    public void insertOne(Product product) {
+        productDb.insert(product.getId(), product);
+    }
 }

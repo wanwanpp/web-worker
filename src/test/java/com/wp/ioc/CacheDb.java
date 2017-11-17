@@ -6,9 +6,9 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by 王萍 on 2017/11/17 0017.
  */
-@Component
-public class CacheDb<K, V> {
+public abstract class CacheDb<K, V> {
 
+//    protected Map<K, V> db;
     private Map<K, V> db;
 
     {
@@ -25,5 +25,9 @@ public class CacheDb<K, V> {
 
     public V select(K id) {
         return db.get(id);
+    }
+
+    public Integer count() {
+        return db.size();
     }
 }
