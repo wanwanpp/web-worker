@@ -25,6 +25,5 @@ public class TestMain {
         productService.deleteOne("100");
 
         System.out.println(productService.getProductCount());
-
     }
 }
